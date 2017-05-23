@@ -18,5 +18,5 @@ app.use('/', routes);
 
 //=================== Start the server ==============================
 app.listen(port);
-appLogs.info('Application Starting');
-appLogs.info(`Resting on port ${port}...\n`);
+console.log('Application Starting');
+console.log(`Resting on port ${port}...\n`);
