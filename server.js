@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 var routes     = require('./routes');
 var fs = require('fs');
 
-var port = 8282;
+var port = 8888;
 
 //Configuration of app to use bodyParser.
 //We're telling it to use both URL parameters AND json bodies
