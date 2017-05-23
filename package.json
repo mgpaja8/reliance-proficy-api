@@ -1,0 +1,14 @@
+{
+  "name": "relience-api",
+  "version": "0.0.0",
+  "description": "Reliance API",
+  "main": "server.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "keywords": [
+    "npm"
+  ],
+  "author": "Pavle Milicevic",
+  "license": "ISC"
+}

@@ -1,0 +1,8 @@
+node_modules
+bower_components
+profiles.json
+dist
+gulpConfig/credentials.json
+config/keys
+coverage
+log
