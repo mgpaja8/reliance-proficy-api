@@ -5,6 +5,9 @@ var app = express();
 var bodyParser = require('body-parser');
 var routes     = require('./routes');
 var fs = require('fs');
+var morgan      = require('morgan');
+var logger = require('./utils/logger');
+var appLogs = logger.appLogs(__filename);
 
 var port = 8888;
 
@@ -13,10 +16,13 @@ var port = 8888;
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
+//log request
+app.use(morgan({stream: logger.stream}));
+
 //Connect the routes
 app.use('/', routes);
 
 //=================== Start the server ==============================
 app.listen(port);
-console.log('Application Starting');
-console.log(`Resting on port ${port}...\n`);
+appLogs.info('Application Starting');
+appLogs.info(`Resting on port ${port}...\n`);
