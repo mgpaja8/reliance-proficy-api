@@ -1,0 +1,6 @@
+{
+  "BAD_REQUEST":{
+		"errorCode":400,
+		"errorMsg":"Bad Request"
+	}
+}
