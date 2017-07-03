@@ -2,6 +2,8 @@
 
 var routes = require('express').Router();
 
+var grv = require('./grv');
+
 // ==================================================================
 // ======================= CORS MIDDLEWARE ==========================
 // Intercepts all routes and injects this middleware, which sets the
@@ -26,6 +28,8 @@ routes.get('/', function (req, res) {
 	/* eslint max-len: 0 */
 	res.status(200).json({message: 'Connection suscessful to initial index.js'});
 });
+
+routes.use('/grv',grv);
 
 //Export the routes after it has been modified so server.js imports it
 module.exports = routes;
