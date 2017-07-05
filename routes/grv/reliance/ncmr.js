@@ -1,49 +1,41 @@
 'use strict';
-
-var FormData = require('form-data');
+var handleRelianceCall = require('./handleRelianceCall');
+var createXML = require('../../../utils/xml-writer.js');
 var fs = require('fs');
-var https = require('https');
 
 function ncmr(req, res){
   var callback = function (status, json) {
+    deleteXML();
 		res.type('application/json');
 		res.status(status)
 		res.json(json);
 		return res;
 	};
 
-  function handleRelianceTestCall(callback){
-    var form = new FormData();
-    form.append('ncmr-create.xml', fs.createReadStream('./routes/grv/reliance/ncmr-create.xml'),{contentType: 'text/xml'});
-    var CRLF = '\r\n';
-
-    form.submit(
-    {
-        host: 'dev-etq.trans.ge.com',
-        port: null,
-        path: '/reliance/rest/v1/connectionProfiles/PROF_NCMR_WEB_API_P/ncmr-create.xml',
-        method: 'POST',
-        headers: {
-            'authorization': 'Basic UmVsaWFuY2U6UGE1NXdvcmQ=',
-            'Content-Type': 'multipart/mixed; boundary=' + form.getBoundary()
-        }
-    },
-    function(err, res) {
-      if(err){
-        callback(500, err);
-      }
-      var str = '';
-
-      res.on('data', function (chunk) {
-        str += chunk;
-      });
-      res.on('end', function () {
-        callback(200, str);
-      });
-    });
+  var makeRellianceCall = function(filename, callback){
+    handleRelianceCall(filename, callback);
   }
 
-  handleRelianceTestCall(callback);
+  var deleteXML = function(){
+    fs.unlinkSync('./routes/grv/reliance/' + filename);
+  }
+
+  var profncmr = {
+    proficyNcmr: '070320171400-TestNCMR',
+    serialNumber: '1111',
+    detectedAtWorkstation: 'TEST',
+    defectSourceWorkstation: 'TEST',
+    defectDrilldown: 'Electrical : Incorrect Lead Bend',
+    defectDescription: 'test',
+    requirementDescription: 'test',
+    partNumber: '84E905137ABP5',
+    defectQuantity: '1',
+    ncmrUser: '501996057'
+  }
+
+  var filename = 'ncmr' + new Date().getTime() + '.xml';
+
+  createXML(filename, profncmr, callback, makeRellianceCall);
 }
 
 module.exports = ncmr;
