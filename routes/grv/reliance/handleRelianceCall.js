@@ -3,7 +3,36 @@ var FormData = require('form-data');
 var fs = require('fs');
 var https = require('https');
 
-var handleRelianceTestCall = function(filename, callback){
+var getNCMR = function(profncmr, callback){
+  var form = new FormData();
+  var CRLF = '\r\n';
+
+  form.submit(
+  {
+      host: 'dev-etq.trans.ge.com',
+      port: null,
+      path: '/reliance/rest/v1/datasources/NCMR_FOR_PROFICY_P/execute?VAR_PROF_NCMR=' + profncmr,
+      method: 'GET',
+      headers: {
+          'authorization': 'Basic UmVsaWFuY2U6UGE1NXdvcmQ='
+      }
+  },
+  function(err, res) {
+    if(err){
+      callback(500, err);
+    }
+    var str = '';
+
+    res.on('data', function (chunk) {
+      str += chunk;
+    });
+    res.on('end', function () {
+      callback(200, str);
+    });
+  });
+}
+
+var handleRelianceCall = function(filename, callback){
   var form = new FormData();
   form.append(filename, fs.createReadStream('./routes/grv/reliance/' + filename),{contentType: 'text/xml'});
   var CRLF = '\r\n';
@@ -34,4 +63,7 @@ var handleRelianceTestCall = function(filename, callback){
   });
 }
 
-module.exports = handleRelianceTestCall;
+module.exports = {
+  createNCMR: handleRelianceCall,
+  getNCMR: getNCMR
+}

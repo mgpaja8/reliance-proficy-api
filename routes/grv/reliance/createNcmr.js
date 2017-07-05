@@ -1,19 +1,30 @@
 'use strict';
-var handleRelianceCall = require('./handleRelianceCall');
+var createNCMR = require('./handleRelianceCall').createNCMR;
 var createXML = require('../../../utils/xml-writer.js');
 var fs = require('fs');
 
 function ncmr(req, res){
   var callback = function (status, json) {
+    parseResults(json);
     deleteXML();
 		res.type('application/json');
 		res.status(status)
-		res.json(json);
+		res.send(json);
 		return res;
 	};
 
+  var parseResults = function (json) {
+    try {
+        JSON.parse(json);
+    }
+    catch (e) {
+        return JSON.stringify(json);
+    }
+    return json;
+	};
+
   var makeRellianceCall = function(filename, callback){
-    handleRelianceCall(filename, callback);
+    createNCMR(filename, callback);
   }
 
   var deleteXML = function(){

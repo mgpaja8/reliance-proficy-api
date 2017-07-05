@@ -4,7 +4,8 @@ var reliance = require('express').Router();
 
  //Endpoints
 var test = require('./test');
-var ncmr = require('./ncmr');
+var createNcmr = require('./createNcmr');
+var getNcmr = require('./getNcmr');
 
  //Allows a ping check to be made for connection to reports (GET)
 reliance.get('/', function (req, res) {
@@ -13,7 +14,8 @@ reliance.get('/', function (req, res) {
 
 //Attatch the functionality to this module's router
 reliance.get('/test', test);
-reliance.get('/ncmr', ncmr);
+reliance.get('/createncmr', createNcmr);
+reliance.get('/getncmr', getNcmr);
 
 //Export the finalized router for usage!
 module.exports = reliance;
