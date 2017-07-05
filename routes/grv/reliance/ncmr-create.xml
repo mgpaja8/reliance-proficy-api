@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE profncmr>
+<profncmr lang="en">
+<proficyNcmr>070320171400-TestNCMR</proficyNcmr>
+<serialNumber>1111</serialNumber>
+<detectedAtWorkstation>TEST</detectedAtWorkstation>
+<defectSourceWorkstation>TEST</defectSourceWorkstation>
+<defectDrilldown>Electrical : Incorrect Lead Bend</defectDrilldown>
+<defectDescription>test</defectDescription>
+<requirementDescription>test</requirementDescription>
+<partNumber>84E905137ABP5</partNumber>
+<defectQuantity>1</defectQuantity>
+<ncmrUser>501996057</ncmrUser>
+</profncmr>
