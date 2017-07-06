@@ -1,5 +1,5 @@
 'use strict';
-var createNCMR = require('./handleRelianceCall').createNCMR;
+var createNCMR = require('../../../utils/handleRelianceCall').createNCMR;
 var createXML = require('../../../utils/xml-writer.js');
 var fs = require('fs');
 
@@ -46,7 +46,6 @@ function ncmr(req, res){
     defectQuantity:           data.DefectQuantity ? data.DefectQuantity : 0,
     ncmrUser:                 data.UserName ? data.UserName : 'test'
   }
-  console.log(JSON.stringify(profncmr, null, 2));
 
   var filename = 'ncmr' + new Date().getTime() + '.xml';
 

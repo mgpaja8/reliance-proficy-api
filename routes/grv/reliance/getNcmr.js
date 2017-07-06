@@ -1,5 +1,5 @@
 'use strict';
-var getNCMR = require('./handleRelianceCall').getNCMR;
+var getNCMR = require('../../../utils/handleRelianceCall').getNCMR;
 
 function ncmr(req, res){
   var callback = function (status, json) {
