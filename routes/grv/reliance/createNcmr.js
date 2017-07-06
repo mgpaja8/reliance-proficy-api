@@ -31,18 +31,22 @@ function ncmr(req, res){
     fs.unlinkSync('./routes/grv/reliance/' + filename);
   }
 
+  var data = req.body.data;
   var profncmr = {
-    proficyNcmr: '070320171400-TestNCMR',
-    serialNumber: '1111',
-    detectedAtWorkstation: 'TEST',
-    defectSourceWorkstation: 'TEST',
-    defectDrilldown: 'Electrical : Incorrect Lead Bend',
-    defectDescription: 'test',
-    requirementDescription: 'test',
-    partNumber: '84E905137ABP5',
-    defectQuantity: '1',
-    ncmrUser: '501996057'
+    proficyNcmr:              data.ProficyNCMR ? data.ProficyNCMR : 'test',
+    serialNumber:             data.SerialNumber ? data.SerialNumber : 'test',
+    //detectedAtWorkstation:    data.DefectAtWorkstation ? data.DefectAtWorkstation : 'test',
+    //defectSourceWorkstation:  data.DefectSourceWorkstation ? data.DefectSourceWorkstation : 'test',
+    detectedAtWorkstation:    'TEST',
+    defectSourceWorkstation:  'TEST',
+    defectDrilldown:          data.DefectDrilldown ? data.DefectDrilldown : 'test',
+    defectDescription:        data.DefectDescription ? data.DefectDescription : 'test',
+    requirementDescription:   data.RequirementDescription ? data.RequirementDescription : 'test',
+    partNumber:               data.PartNumber ? data.PartNumber : 'test',
+    defectQuantity:           data.DefectQuantity ? data.DefectQuantity : 0,
+    ncmrUser:                 data.UserName ? data.UserName : 'test'
   }
+  console.log(JSON.stringify(profncmr, null, 2));
 
   var filename = 'ncmr' + new Date().getTime() + '.xml';
 
