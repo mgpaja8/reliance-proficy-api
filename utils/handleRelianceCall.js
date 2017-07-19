@@ -2,6 +2,7 @@
 var FormData = require('form-data');
 var fs = require('fs');
 var https = require('https');
+var appRoot = require('app-root-path');
 
 var getNCMR = function(profncmr, callback){
   var form = new FormData();
@@ -34,7 +35,7 @@ var getNCMR = function(profncmr, callback){
 
 var handleRelianceCall = function(filename, callback){
   var form = new FormData();
-  form.append(filename, fs.createReadStream('./routes/grv/reliance/' + filename),{contentType: 'text/xml'});
+  form.append(filename, fs.createReadStream(appRoot + '/' + filename),{contentType: 'text/xml'});
   var CRLF = '\r\n';
 
   form.submit(

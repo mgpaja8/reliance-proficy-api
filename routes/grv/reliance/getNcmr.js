@@ -3,7 +3,9 @@ var getNCMR = require('../../../utils/handleRelianceCall').getNCMR;
 
 function ncmr(req, res){
   var callback = function (status, json) {
-    parseResults(json);
+    if (status === 200) {
+			json = parseResults(json);
+		}
 		res.type('application/json');
 		res.status(status)
 		res.send(json);
@@ -11,13 +13,8 @@ function ncmr(req, res){
 	};
 
   var parseResults = function (json) {
-    try {
-        JSON.parse(json);
-    }
-    catch (e) {
-        return JSON.stringify(json);
-    }
-    return json;
+    var ncmr = JSON.parse(json).Records[0].Columns[0];
+    return ncmr;
 	};
 
   var profncmr = req.query.profncmr;

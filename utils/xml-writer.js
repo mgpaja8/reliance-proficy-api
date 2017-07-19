@@ -1,11 +1,12 @@
 'use strict'
 var XMLWriter = require('xml-writer');
 var fs = require('fs');
+var appRoot = require('app-root-path');
 
 var writeXML = function(filename, obj, callback, makeRellianceCall){
   if(obj === null) return 'Passed object in null';
 
-  var ws = fs.createWriteStream('./routes/grv/reliance/' + filename);
+  var ws = fs.createWriteStream(appRoot + '/' + filename);
 
   ws.on('close', function() {
     makeRellianceCall(filename, callback);
