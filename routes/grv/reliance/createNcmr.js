@@ -26,7 +26,7 @@ function ncmr(req, res){
     return json;
 	};
 
-  var makeRellianceCall = function(filename, callback){
+  var makeRellianceCall = function(filename){
     createNCMR(filename, callback);
   }
 
@@ -48,7 +48,8 @@ function ncmr(req, res){
     partNumber:               data.PartNumber ? data.PartNumber : 'test',
     defectQuantity:           data.DefectQuantity ? data.DefectQuantity : 0,
     ncmrUser:                 data.UserName ? data.UserName : 'test',
-    ncmrLocation:             data.Location ? data.Location : 'test'
+    ncmrLocation:             data.Location ? data.Location : 'test',
+    WorkOrder:                data.WorkOrder ? data.WorkOrder : 'testWO'
   }
   var parseWSname = function(str){
     var res = str.split(': ');
@@ -59,7 +60,7 @@ function ncmr(req, res){
 
   var filename = 'ncmr' + new Date().getTime() + '.xml';
 
-  createXML(filename, profncmr, callback, makeRellianceCall);
+  createXML(filename, profncmr, makeRellianceCall);
 }
 
 module.exports = ncmr;

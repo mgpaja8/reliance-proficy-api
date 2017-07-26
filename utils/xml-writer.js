@@ -3,13 +3,13 @@ var XMLWriter = require('xml-writer');
 var fs = require('fs');
 var appRoot = require('app-root-path');
 
-var writeXML = function(filename, obj, callback, makeRellianceCall){
+var writeXML = function(filename, obj, callback){
   if(obj === null) return 'Passed object in null';
 
   var ws = fs.createWriteStream(appRoot + '/' + filename);
 
   ws.on('close', function() {
-    makeRellianceCall(filename, callback);
+    callback(filename);
   });
 
   var xw = new XMLWriter(true, function(string, encoding) {
