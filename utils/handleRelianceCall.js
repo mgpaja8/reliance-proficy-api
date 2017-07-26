@@ -64,7 +64,40 @@ var handleRelianceCall = function(filename, callback){
   });
 }
 
+
+var closeNCMR = function(filename, callback){
+  var form = new FormData();
+  form.append(filename, fs.createReadStream(appRoot + '/' + filename),{contentType: 'text/xml'});
+  var CRLF = '\r\n';
+
+  form.submit(
+  {
+      host: 'dev-etq.trans.ge.com',
+      port: null,
+      path: '/reliance/rest/v1/connectionProfiles/PROFICY_NCMR_CLOSING_WEB_API_P/' + filename,
+      method: 'POST',
+      headers: {
+          'authorization': 'Basic UmVsaWFuY2U6UGE1NXdvcmQ=',
+          'Content-Type': 'multipart/mixed; boundary=' + form.getBoundary()
+      }
+  },
+  function(err, res) {
+    if(err){
+      callback(500, err);
+    }
+    var str = '';
+
+    res.on('data', function (chunk) {
+      str += chunk;
+    });
+    res.on('end', function () {
+      callback(200, str);
+    });
+  });
+}
+
 module.exports = {
   createNCMR: handleRelianceCall,
-  getNCMR: getNCMR
+  getNCMR: getNCMR,
+  closeNCMR: closeNCMR
 }
