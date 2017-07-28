@@ -37,8 +37,8 @@ function ncmr(req, res){
   appLogs.info(JSON.stringify(req.body, null, 4));
   var data = req.body.data;
   var ncmrdata = {
-    ncmrNum:                  data.ncmrNum ? data.ncmrNum : 'test',
-    actionTaken:              data.actionTaken ? data.actionTaken : 'test',
+    ncmrNum:                  data.NCMRNumber ? data.NCMRNumber : 'test',
+    actionTaken:              data.RecordActionTaken ? data.RecordActionTaken : 'test',
     closingComments:          data.closingComments ? data.closingComments : 'Closed from Proficy UI'
   }
 
