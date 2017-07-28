@@ -3,6 +3,7 @@ var FormData = require('form-data');
 var fs = require('fs');
 var https = require('https');
 var appRoot = require('app-root-path');
+var reliance = require('../config/profiles.json').reliance.dev.host;
 
 var getNCMR = function(profncmr, callback){
   var form = new FormData();
@@ -10,7 +11,7 @@ var getNCMR = function(profncmr, callback){
 
   form.submit(
   {
-      host: 'dev-etq.trans.ge.com',
+      host: reliance,
       port: null,
       path: '/reliance/rest/v1/datasources/NCMR_FOR_PROFICY_P/execute?VAR_PROF_NCMR=' + profncmr,
       method: 'GET',
@@ -33,14 +34,14 @@ var getNCMR = function(profncmr, callback){
   });
 }
 
-var handleRelianceCall = function(filename, callback){
+var createNCMR = function(filename, callback){
   var form = new FormData();
   form.append(filename, fs.createReadStream(appRoot + '/' + filename),{contentType: 'text/xml'});
   var CRLF = '\r\n';
 
   form.submit(
   {
-      host: 'dev-etq.trans.ge.com',
+      host: reliance,
       port: null,
       path: '/reliance/rest/v1/connectionProfiles/PROF_NCMR_WEB_API_P/' + filename,
       method: 'POST',
@@ -64,7 +65,6 @@ var handleRelianceCall = function(filename, callback){
   });
 }
 
-
 var closeNCMR = function(filename, callback){
   var form = new FormData();
   form.append(filename, fs.createReadStream(appRoot + '/' + filename),{contentType: 'text/xml'});
@@ -72,7 +72,7 @@ var closeNCMR = function(filename, callback){
 
   form.submit(
   {
-      host: 'dev-etq.trans.ge.com',
+      host: reliance,
       port: null,
       path: '/reliance/rest/v1/connectionProfiles/PROFICY_NCMR_CLOSING_WEB_API_P/' + filename,
       method: 'POST',
@@ -97,7 +97,7 @@ var closeNCMR = function(filename, callback){
 }
 
 module.exports = {
-  createNCMR: handleRelianceCall,
+  createNCMR: createNCMR,
   getNCMR: getNCMR,
   closeNCMR: closeNCMR
 }

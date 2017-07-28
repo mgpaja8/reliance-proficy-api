@@ -39,7 +39,7 @@ function ncmr(req, res){
   var ncmrdata = {
     ncmrNum:                  data.ncmrNum ? data.ncmrNum : 'test',
     actionTaken:              data.actionTaken ? data.actionTaken : 'test',
-    closingComments:          data.closingComments ? data.closingComments : 'test'
+    closingComments:          data.closingComments ? data.closingComments : 'Closed from Proficy UI'
   }
 
   var filename = 'ncmr' + new Date().getTime() + '.xml';
