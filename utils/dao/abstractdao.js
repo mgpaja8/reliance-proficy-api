@@ -1,7 +1,7 @@
 'use strict';
 
 var sql = require('mssql');
-var logger = require('/utils/logger');
+var logger = require('../logger');
 var appLogs = logger.appLogs(__filename);
 
 function handleExecuteQuery(credentials, queryString, prepareQuery, callback) {

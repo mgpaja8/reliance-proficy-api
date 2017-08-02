@@ -5,14 +5,14 @@
           "password": "proficydbo",
           "server": "grrgetmesv01p.rail.ad.trans.ge.com",
           "database": "GBDB_p01",
-     	  "port": "3433"
+     	    "port": "3433"
       },
       "mes_stage":{
           "username": "proficydbo",
           "password": "proficydbo",
           "server": "ALPTRANDBV002.rail.ad.trans.ge.com",
           "database": "GBDB_t01",
-     	  "port": "3433"
+     	    "port": "3433"
       },
       "mes_dev":{
           "username": "proficydbo",
@@ -27,7 +27,27 @@
           "password": "grv@Prod12rw",
           "server": "GRVGETMESV001P.rail.ad.trans.ge.com",
           "database": "grv_production",
-     	  "port": "3433"
+     	    "port": "3433"
+      },
+      "mes":{
+          "username": "proficydbo",
+          "password": "proficydbo",
+          "server": "getmesv002p.rail.ad.trans.ge.com\\PROD1,3434",
+          "database": "SOADB_P02",
+     	    "port": "3434"
+      },
+      "mes_stage":{
+          "username": "proficydbo",
+          "password": "proficydbo",
+          "server": "VDCAWD05874.logon.ds.ge.com\\STAGE",
+          "database": "soadb",
+     	    "port": "3433"
+      },
+      "mes_dev":{
+          "username": "proficydbo",
+          "password": "proficydbo",
+          "server": "VDCGWD02709.logon.ds.ge.com\\PROD",
+          "database": "SOADB"
       }
   },
   "reliance": {
