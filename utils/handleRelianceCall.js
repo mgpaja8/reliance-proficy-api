@@ -3,7 +3,7 @@ var FormData = require('form-data');
 var fs = require('fs');
 var https = require('https');
 var appRoot = require('app-root-path');
-var reliance = require('../config/profiles.json').reliance.dev.host;
+var reliance = require('../config/profiles.json').reliance.prod.host;
 
 var getNCMR = function(profncmr, callback){
   var form = new FormData();

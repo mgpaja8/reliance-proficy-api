@@ -32,7 +32,7 @@
       "mes":{
           "username": "proficydbo",
           "password": "proficydbo",
-          "server": "getmesv002p.rail.ad.trans.ge.com\\PROD1,3434",
+          "server": "grvgetmesv002p.rail.ad.trans.ge.com\\PROD2",
           "database": "SOADB_P02",
      	    "port": "3434"
       },
