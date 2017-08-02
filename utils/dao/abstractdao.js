@@ -12,12 +12,17 @@ function handleExecuteQuery(credentials, queryString, prepareQuery, callback) {
 		if (err) {
 			return callback(500, err);
 		}
+		else{
+			appLogs.info('Connection successful');
+		}
 		var request = new sql.Request(connection);
 		request = prepareQuery(request);
 		request.query(queryString, function (err, results) {
 			if (err) {
+				appLogs.error(err);
 				return callback(500, err);
 			}
+			appLogs.info('DB job successful');
 			return callback(200, results);
 		});
 	});

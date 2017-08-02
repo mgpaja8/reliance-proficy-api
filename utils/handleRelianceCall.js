@@ -83,7 +83,7 @@ var closeNCMR = function(filename, callback){
   },
   function(err, res) {
     if(err){
-      callback(500, err);
+      return callback(500, err);
     }
     var str = '';
 
@@ -91,7 +91,7 @@ var closeNCMR = function(filename, callback){
       str += chunk;
     });
     res.on('end', function () {
-      callback(200, str);
+      return callback(200, str);
     });
   });
 }
