@@ -38,18 +38,18 @@ function ncmr(req, res){
   appLogs.info(JSON.stringify(req.body, null, 4));
   var data = req.body.data;
   var profncmr = {
-    proficyNcmr:              data.ProficyNCMR ? data.ProficyNCMR : 'test',
-    serialNumber:             data.SerialNumber ? data.SerialNumber : 'test',
-    detectedAtWorkstation:    data.DefectAtWorkstation ? data.DefectAtWorkstation : 'test',
-    defectSourceWorkstation:  data.DefectSourceWorkstation ? data.DefectSourceWorkstation : 'test',
-    defectDrilldown:          data.DefectDrilldown ? data.DefectDrilldown : 'test',
-    defectDescription:        data.DefectDescription ? data.DefectDescription : 'test',
-    requirementDescription:   data.RequirementDescription ? data.RequirementDescription : 'test',
-    partNumber:               data.PartNumber ? data.PartNumber : 'test',
+    proficyNcmr:              data.ProficyNCMR ? data.ProficyNCMR : 'NOT ENTERED',
+    serialNumber:             data.SerialNumber ? data.SerialNumber : 'NOT ENTERED',
+    detectedAtWorkstation:    data.DefectAtWorkstation ? data.DefectAtWorkstation : 'NOT ENTERED',
+    defectSourceWorkstation:  data.DefectSourceWorkstation ? data.DefectSourceWorkstation : 'NOT ENTERED',
+    defectDrilldown:          data.DefectDrilldown ? data.DefectDrilldown : 'NOT ENTERED',
+    defectDescription:        data.DefectDescription ? data.DefectDescription : 'NOT ENTERED',
+    requirementDescription:   data.RequirementDescription ? data.RequirementDescription : 'NOT ENTERED',
+    partNumber:               data.PartNumber ? data.PartNumber : 'NOT ENTERED',
     defectQuantity:           data.DefectQuantity ? data.DefectQuantity : 0,
-    ncmrUser:                 data.UserName ? data.UserName : 'test',
-    ncmrLocation:             data.Location ? data.Location : 'test',
-    WorkOrder:                data.WorkOrder ? data.WorkOrder : 'testWO'
+    ncmrUser:                 data.UserName ? data.UserName : 'NOT ENTERED',
+    ncmrLocation:             data.Location ? data.Location : 'NOT ENTERED',
+    WorkOrder:                data.WorkOrder ? data.WorkOrder : 'NOT ENTERED'
   }
   var parseWSname = function(str){
     var res = str.split(': ');
