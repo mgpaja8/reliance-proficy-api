@@ -34,8 +34,8 @@ function ncmr(req, res){
     fs.unlinkSync(appRoot + '/' + filename);
   }
 
-  //console.log(JSON.stringify(req.body, null, 4));
   appLogs.info(JSON.stringify(req.body, null, 4));
+
   var data = req.body.data;
   var profncmr = {
     proficyNcmr:              data.ProficyNCMR ? data.ProficyNCMR : 'NOT ENTERED',
@@ -45,18 +45,12 @@ function ncmr(req, res){
     defectDrilldown:          data.DefectDrilldown ? data.DefectDrilldown : 'NOT ENTERED',
     defectDescription:        data.DefectDescription ? data.DefectDescription : 'NOT ENTERED',
     requirementDescription:   data.RequirementDescription ? data.RequirementDescription : 'NOT ENTERED',
-    partNumber:               data.PartNumber ? data.PartNumber : 'NOT ENTERED',
+    partNumber:               data.PartNumber ? data.PartNumber : 'NOT SPECIFIED',
     defectQuantity:           data.DefectQuantity ? data.DefectQuantity : 0,
     ncmrUser:                 data.UserName ? data.UserName : 'NOT ENTERED',
     ncmrLocation:             data.Location ? data.Location : 'NOT ENTERED',
     WorkOrder:                data.WorkOrder ? data.WorkOrder : 'NOT ENTERED'
   }
-  var parseWSname = function(str){
-    var res = str.split(': ');
-    console.log('ws:' + res[1]);
-    return res[1];
-  }
-
 
   var filename = 'ncmr' + new Date().getTime() + '.xml';
 
