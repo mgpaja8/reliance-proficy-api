@@ -6,7 +6,7 @@ var appRoot = require('app-root-path');
 var logger = require('../../../utils/logger');
 var appLogs = logger.appLogs(__filename);
 var abstractdao = require('../../../utils/dao/abstractdao');
-var config = require('../../../config/profiles.json').grv.mes_dev;
+var config = require('../../../config/profiles.json').grv.mes;
 var query = require('../../../sql/queries/closeNCMR.json').query;
 
 var prepareQuery = function (request) {

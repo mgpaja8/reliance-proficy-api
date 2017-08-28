@@ -3,7 +3,7 @@ var CronJob = require('cron').CronJob;
 var logger = require('../utils/logger');
 var appLogs = logger.appLogs(__filename);
 var abstractdao = require('../utils/dao/abstractdao');
-var config = require('../config/profiles.json').grv.mes_dev;
+var config = require('../config/profiles.json').grv.mes;
 var query = require('../sql/queries/failedPrintJobsCount.json').query;
 var exec = require('child_process').exec;
 
@@ -20,7 +20,7 @@ var credentials = {
 };
 
 var restartPrinterServiceJob = new CronJob({
-  cronTime: '0 * * * * *',
+  cronTime: '0 */30 * * * *',
   onTick: function(){
     appLogs.info("restart-printer-service-job started");
     handleOnTick();
@@ -45,7 +45,7 @@ var makeDBCall = function(){
 var dbCallback = function(status, json){
   if(status === 200){
     var count = json[0].Count;
-    if( count >= 1 ){
+    if( count >= 5 ){
       return restartService();
     }
     return appLogs.info("restart-printer-service-job completed");
