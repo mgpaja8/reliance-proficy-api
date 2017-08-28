@@ -1,0 +1,3 @@
+{
+  "query": "SELECT COUNT(*) AS 'Count' FROM Local_PrintLabelQueue WHERE IsProcessed = 0"
+}

@@ -8,6 +8,7 @@ var fs = require('fs');
 var morgan      = require('morgan');
 var logger = require('./utils/logger');
 var appLogs = logger.appLogs(__filename);
+var printerJob = require('./jobs/restart-printer-service-job').start;
 
 var port = 8888;
 
@@ -26,3 +27,4 @@ app.use('/', routes);
 app.listen(port);
 appLogs.info('Application Starting');
 appLogs.info(`Resting on port ${port}...\n`);
+printerJob();

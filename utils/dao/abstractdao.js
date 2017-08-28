@@ -19,7 +19,6 @@ function handleExecuteQuery(credentials, queryString, prepareQuery, callback) {
 		request = prepareQuery(request);
 		request.query(queryString, function (err, results) {
 			if (err) {
-				appLogs.error(err);
 				return callback(500, err);
 			}
 			appLogs.info('DB job successful');
