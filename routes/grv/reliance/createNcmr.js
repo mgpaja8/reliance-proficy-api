@@ -9,7 +9,7 @@ var appLogs = logger.appLogs(__filename);
 function ncmr(req, res){
   var callback = function (status, json) {
     parseResults(json);
-    deleteXML();
+    //deleteXML();
 		res.type('application/json');
 		res.status(status)
 		res.send(json);
