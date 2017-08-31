@@ -49,7 +49,9 @@ function ncmr(req, res){
     defectQuantity:           data.DefectQuantity ? data.DefectQuantity : 0,
     ncmrUser:                 data.UserName ? data.UserName : 'NOT ENTERED',
     ncmrLocation:             data.Location ? data.Location : 'NOT ENTERED',
-    WorkOrder:                data.WorkOrder ? data.WorkOrder : 'NOT ENTERED'
+    WorkOrder:                data.WorkOrder ? data.WorkOrder : 'NOT ENTERED',
+    ExpressReworkFlag:        data.ExpressRework ? data.ExpressRework : 0,
+    DispositionInstructions:  data.DispositionInstructions ? data.DispositionInstructions : ''
   }
 
   var filename = 'ncmr' + new Date().getTime() + '.xml';

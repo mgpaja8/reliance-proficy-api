@@ -3,7 +3,7 @@ var CronJob = require('cron').CronJob;
 var logger = require('../utils/logger');
 var appLogs = logger.appLogs(__filename);
 var abstractdao = require('../utils/dao/abstractdao');
-var config = require('../config/profiles.json').grv.mes;
+var config = require('../config/profiles.json').grv.mes_dev;
 var query = require('../sql/queries/failedPrintJobsCount.json').query;
 var exec = require('child_process').exec;
 
