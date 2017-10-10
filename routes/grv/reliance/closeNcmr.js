@@ -42,9 +42,10 @@ function ncmr(req, res){
   appLogs.info(JSON.stringify(req.body, null, 4));
   var data = req.body.data;
   var ncmrdata = {
-    ncmrNum:                  data.NCMRNumber ? data.NCMRNumber : 'test',
-    actionTaken:              data.RecordActionTaken ? data.RecordActionTaken : 'test',
-    closingComments:          data.closingComments ? data.closingComments : 'Closed from Proficy UI'
+    ncmrNum:                  data.NCMRNumber ? data.NCMRNumber : 'NOT ENTERED',
+    actionTaken:              data.RecordActionTaken ? data.RecordActionTaken : 'NOT ENTERED',
+    closingComments:          data.closingComments ? data.closingComments : 'Closed from Proficy UI',
+		NcmrClosedBy:							data.UserName ? data.UserName : 'NOT ENTERED'
   }
 
   var filename = 'ncmr' + new Date().getTime() + '.xml';

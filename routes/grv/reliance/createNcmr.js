@@ -9,7 +9,7 @@ var appLogs = logger.appLogs(__filename);
 function ncmr(req, res){
   var callback = function (status, json) {
     parseResults(json);
-    //deleteXML();
+    deleteXML();
 		res.type('application/json');
 		res.status(status)
 		res.send(json);
@@ -51,7 +51,8 @@ function ncmr(req, res){
     ncmrLocation:             data.Location ? data.Location : 'NOT ENTERED',
     WorkOrder:                data.WorkOrder ? data.WorkOrder : 'NOT ENTERED',
     ExpressReworkFlag:        data.ExpressRework ? data.ExpressRework : 0,
-    DispositionInstructions:  data.DispositionInstructions ? data.DispositionInstructions : ''
+    DispositionInstructions:  data.DispositionInstructions ? data.DispositionInstructions : '',
+    NcmrLocation:             data.Location ? data.Location : ''
   }
 
   var filename = 'ncmr' + new Date().getTime() + '.xml';
